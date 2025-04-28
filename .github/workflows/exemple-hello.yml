@@ -1,1 +1,9 @@
+name: Exemple simple
+on: push
 
+jobs:
+  dire-bonjour:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Message de bienvenue
+        run: echo "Bonjour GitHub Actions ! 🚀"
