@@ -1,0 +1,30 @@
+name: Exercice avec jobs, secrets et variables d'environnement
+on: push
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+        
+      - name: Vérifier que le fichier README.md est présent
+        run: |
+          if [ -f README.md ]; then
+            echo "✅ Le fichier README.md est bien présent !"
+          else
+            echo "❌ Attention : aucun README.md trouvé."
+            exit 1
+          fi
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    env:
+      MESSAGE: "N'oubliez pas : ne laissez jamais vos secrets visibles dans vos workflows !"
+    steps:
+      - name: Afficher un message personnalisé avec la variable d'environnement
+        run: echo "$MESSAGE"
+      
+      - name: Utiliser un secret dans les logs
+        run: echo "La clé API est : ${{ secrets.MY_API_KEY }}"
