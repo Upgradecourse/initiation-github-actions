@@ -5,6 +5,9 @@ jobs:
   verifier-fichiers:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+    
       - name: Vérifier la présence d'un README
         run: |
           if [ -f README.md ]; then
