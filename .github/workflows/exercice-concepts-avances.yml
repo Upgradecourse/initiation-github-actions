@@ -27,4 +27,4 @@ jobs:
         run: echo "$MESSAGE"
       
       - name: Utiliser un secret dans les logs
-        run: echo "La clé API est : ${{ secrets.MY_API_KEY }}"
+        run: echo "La clé API est :${{ secrets.MY_API_KEY }}"
