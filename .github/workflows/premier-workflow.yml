@@ -1,0 +1,17 @@
+name: Premier vrai workflow
+on: push
+
+jobs:
+  verifier-fichiers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vérifier la présence d'un README
+        run: |
+          if [ -f README.md ]; then
+            echo "✅ Le fichier README.md est bien présent !"
+          else
+            echo "❌ Attention : aucun README.md trouvé."
+            exit 1
+          fi
+      - name: Afficher un message final
+        run: echo "🎉 Fin du workflow avec succès."
