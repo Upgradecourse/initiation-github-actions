@@ -8,11 +8,14 @@ jobs:
       - name: Checkout du code
         uses: actions/checkout@v2
         
-      - name: Vérifier la syntaxe YAML avec YAML Lint
+      - name: Installer yamllint
         run: |
-          sudo apt-get install -y npm
-          sudo npm install -g yaml-lint
-          yaml-lint .github/workflows/exercice-1.yml  # Vérifie le fichier YAML
+          sudo apt-get update
+          sudo apt-get install -y yamllint  # Installer yamllint avec apt-get
+
+      - name: Vérifier la syntaxe YAML avec yamllint
+        run: |
+          yamllint .github/workflows/exercice-1.yml  # Vérifie le fichier YAML
           
   job2:
     runs-on: ubuntu-latest
