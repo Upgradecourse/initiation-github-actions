@@ -7,7 +7,6 @@ jobs:
     steps:
       - name: Checkout du code
         uses: actions/checkout@v2
-        
       - name: Installer yamllint
         run: |
           sudo apt-get update
