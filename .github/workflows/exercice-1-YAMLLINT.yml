@@ -23,6 +23,5 @@ jobs:
     steps:
       - name: Afficher un message personnalisé avec la variable d'environnement
         run: echo "$MESSAGE"
-      
       - name: Utiliser un secret dans les logs
         run: echo "La clé API est :${{ secrets.MY_API_KEY }}"
