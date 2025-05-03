@@ -1,0 +1,27 @@
+name: Exercice 1  Vérification YAML et utilisation de secrets
+on: push
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v2
+        
+      - name: Vérifier la syntaxe YAML avec YAML Lint
+        run: |
+          sudo apt-get install -y npm
+          sudo npm install -g yaml-lint
+          yaml-lint .github/workflows/exercice-1.yml  # Vérifie le fichier YAML
+          
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    env:
+      MESSAGE: "Bravo, votre YAML est valide !"
+    steps:
+      - name: Afficher un message personnalisé avec la variable d'environnement
+        run: echo "$MESSAGE"
+      
+      - name: Utiliser un secret dans les logs
+        run: echo "La clé API est :${{ secrets.MY_API_KEY }}"
