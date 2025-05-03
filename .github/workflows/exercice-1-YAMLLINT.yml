@@ -16,7 +16,6 @@ jobs:
       - name: Vérifier la syntaxe YAML avec yamllint
         run: |
           yamllint .github/workflows/exercice-1-YAMLLINT.yml
-          
   job2:
     runs-on: ubuntu-latest
     needs: job1
