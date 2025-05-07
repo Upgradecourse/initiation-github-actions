@@ -1,4 +1,4 @@
-name: Premier vrai workflow
+name: Premier workflow
 on: push
 
 jobs:
